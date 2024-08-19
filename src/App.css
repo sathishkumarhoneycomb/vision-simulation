@@ -12,6 +12,7 @@
   transition: opacity 0.3s;
 }
 
-/* .range-slider {
+.range-slider {
   margin-top: 20px;
-} */
+  width: 100%;
+}
