@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css'; // Assuming you have your styles here
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const [sliderValue, setSliderValue] = useState(1);
@@ -13,9 +14,16 @@ const App = () => {
   const opacityValue = (sliderValue % 1000) / 1000;
 
   const imageSrc = ["https://downloads.zeiss.com/medical/vision-simulation-tool/img/szene1/normal.jpg", "https://downloads.zeiss.com/medical/vision-simulation-tool/img/szene1/presb.jpg", "https://downloads.zeiss.com/medical/vision-simulation-tool/img/szene1/presb_cat.jpg", "https://downloads.zeiss.com/medical/vision-simulation-tool/img/szene1/monofokal.jpg","https://downloads.zeiss.com/medical/vision-simulation-tool/img/szene1/edof.jpg","https://downloads.zeiss.com/medical/vision-simulation-tool/img/szene1/trifokal.jpg"]
+  const stages = ["normal", "presbyopia", "cataract", "monofocal", "multi focul", "trifocul"];
+  const categories = ["Prior to surgery", "IOL Implantation", "After surgery"];
 
+
+  
   return (
     <div>
+
+
+
       <div className="image-stack">
         {[...Array(6)].map((_, index) => (
           <img
@@ -24,13 +32,25 @@ const App = () => {
             alt={`Image ${index + 1}`}
             style={{
               opacity: index === interval ? 1 : (index === interval + 1 ? opacityValue : 0),
-              zIndex: index === interval ? 2 : 1,
+              // zIndex: index === interval ? 2 : 1,
               transition: 'opacity 0.3s'
             }}
             className="stack-image"
           />
         ))}
       </div>
+
+        <div className="mt-5">
+
+        {/* <ul className="list-unstyled d-flex w-100 justify-content-between">
+          {
+            [...Array(6)].map((_,index) => {
+              return <li key={index} className='list-unstyled'> {stages[index]}  </li>
+            })
+          }
+        </ul> */}
+
+
       <input
         type="range"
         min="1"
@@ -38,8 +58,19 @@ const App = () => {
         value={sliderValue}
         onChange={handleSliderChange}
         className="range-slider"
-        // style={{marginTop: "5px"}}
       />
+
+      {/* <ul className='list-unstyled d-flex justify-content-between'>
+          {
+            [...Array(3)].map((_, index) => {
+              return (
+                <li key={index}> {categories[index]}</li>
+              )
+            })
+          }
+
+      </ul> */}
+      </div>
     </div>
   );
 };
