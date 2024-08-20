@@ -1,19 +1,58 @@
+/* App.css */
+
+/* Container for stacked images */
 .image-stack {
   position: relative;
-  width: 800px;
-  height: 400px;
+  width: 100%;
+  height: 400px; /* Adjust as needed */
+  overflow: hidden;
 }
 
+/* Individual images in the stack */
 .stack-image {
   position: absolute;
   width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.3s;
+  height: 100%; /* Adjust to cover the container fully */
+  opacity: 0; /* Hide images by default */
+  transition: opacity 0.3s; /* Smooth transition for opacity changes */
 }
 
+/* Style for the torbi_lens image */
+.torbi_lens {
+  position: absolute;
+  z-index: 10;
+  display: block;
+  transition: transform 0.3s, left 0.3s; /* Smooth transition for scaling and position changes */
+}
+
+/* Range slider style */
 .range-slider {
-  margin-top: 20px;
+  -webkit-appearance: none; /* Remove default slider styles */
   width: 100%;
+  height: 8px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+  margin-top: 20px; /* Space above the slider */
 }
 
+/* Hide the default thumb */
+.range-slider::-webkit-slider-thumb,
+.range-slider::-moz-range-thumb {
+  -webkit-appearance: none; /* Hide default thumb for WebKit browsers */
+  width: 0; /* Hide default thumb */
+  height: 0;
+  cursor: pointer;
+}
+
+/* Marker style */
+.marker {
+  position: absolute;
+  top: -30px; /* Adjust based on the size of your marker */
+  width: 20px; /* Adjust based on marker size */
+  height: 20px; /* Adjust based on marker size */
+  pointer-events: none; /* Ensure the image doesn't interfere with slider interactions */
+  transform: translateX(-50%); /* Center the marker */
+  transition: left 0.3s, transform 0.3s; /* Smooth transitions */
+}
