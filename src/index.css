@@ -11,6 +11,10 @@ body {
   color: blue;
 }
 
+.state_description {
+  color: blue;
+  transition: all 3s;
+}
 
 .ms-iol {
   margin-left:13rem;
