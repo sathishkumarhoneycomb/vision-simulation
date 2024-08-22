@@ -360,18 +360,77 @@ const App = () => {
               />
             </div>
             <div className="mt-5">
-              <ul className="list-unstyled d-flex w-100 justify-content-between">
-                {
-                  [...Array(6)].map((_, index) => (
-                    <li
-                      key={index}
-                      className={`list-unstyled ${currentState === index ? "state_active" : ""} ${index === 5 && currentState === 0 ? "state_active" : ""}`}
-                    >
-                      {states[index].title}
-                    </li>
-                  ))
-                }
-              </ul>
+            
+            <div className='d-flex'>
+            <p
+  key={0}
+  className={`normal_text ${
+    currentState === 0 ? "state_active" : ""
+  } ${
+    0 === 5 && currentState === 0 ? "state_active" : ""
+  }`}
+>
+  {states[0].title}
+</p>
+
+
+
+<p
+  key={1}
+  className={`pres_text ${
+    currentState === 1 ? "state_active" : ""
+  } ${
+    1 === 5 && currentState === 0 ? "state_active" : ""
+  }`}
+>
+  {states[1].title}
+</p>
+
+<p
+  key={2}
+  className={`cataract_text ${
+    currentState === 2 ? "state_active" : ""
+  } ${
+    2 === 5 && currentState === 0 ? "state_active" : ""
+  }`}
+>
+  {states[2].title}
+</p>
+
+<p
+  key={3}
+  className={`monofocul_text ${
+    currentState === 3 ? "state_active" : ""
+  } ${
+    3 === 5 && currentState === 0 ? "state_active" : ""
+  }`}
+>
+  {states[3].title}
+</p>
+
+<p
+  key={4}
+  className={`edof_text ${
+    currentState === 4 ? "state_active" : ""
+  } ${
+    4 === 5 && currentState === 0 ? "state_active" : ""
+  }`}
+>
+  {states[4].title}
+</p>
+
+<p
+  key={5}
+  className={`trifocul_text ${
+    currentState === 5 ? "state_active" : ""
+  } ${
+    5 === 5 && currentState === 0 ? "state_active" : ""
+  }`}
+>
+  {states[5].title}
+</p>
+</div>
+
               <input
                 type="range"
                 min="1"
@@ -381,19 +440,81 @@ const App = () => {
                 className="range-slider w-100"
                 ref={inputRangeRef}
               />
-              <span className={`me-5 ${currentCategory == 0 ? "state_active" : ""}`}> Prior to surgery </span>
-              <span className={`me-5 ${currentCategory == 1 ? "state_active" : ""}`}> IOL Implantation </span>
-              <span className={`me-5 ${currentCategory == 2 ? "state_active" : ""}`}> After Surgery </span>
+             <div className="d-flex justify-content-center">
+  <p
+    className={`prior_text ${
+      currentCategory === 0 ? "state_active" : ""
+    }`}
+  >
+    Prior to surgery
+  </p>
+
+  <p
+    className={`iol_text ${
+      currentCategory === 1 ? "state_active" : ""
+    }`}
+  >
+    IOL Implantation
+  </p>
+
+  <p
+    className={`after_surgery_text ${
+      currentCategory === 2 ? "state_active" : ""
+    }`}
+  >
+    After Surgery
+  </p>
+</div>
             </div>
 
-            <div className='mt-5 row align-items-center' >
+            <div className='mt-3 row align-items-center' >
               <div className='col-md-4'>
-              <img src={BtnAutoPlay} alt="auto play button" ref={autoPlayBtnRef} onClick={handleAutoPlay} className=''/>
+              <img src={BtnAutoPlay} alt="auto play button" ref={autoPlayBtnRef} onClick={handleAutoPlay} className=''/> 
+              <span className='ms-2'> Auto Play  </span>
               </div>
               <div className='col-md-8'>
-                <p className='state_description text-dark '> {
-                    currentStateDescription
-                  } </p>
+              <div className="d-flex">
+                {
+                  currentState == 0 &&   <p className="state_description text-dark fade-in visible">
+                  At the normal generally people will be able to see clearly.
+                </p>
+                }
+
+                {
+                  currentState == 1 &&   <p className="state_description text-dark fade-in visible">
+                  At this state, you can see far objects but near objects will be blurry.
+                </p>
+                }
+
+
+                {
+                  currentState == 2 &&   <p className="state_description text-dark fade-in visible">
+                  When the person has cataract, both far and near objects will look blurry.
+                </p>
+                }
+
+
+                {
+                  currentState == 3 &&   <p className="state_description text-dark fade-in visible">
+                  It is a one-way correction, where any of the sightedness is corrected.
+                </p>
+                }
+
+                  {
+                    currentState == 4 &&   <p className="state_description text-dark fade-in visible">
+                    It is an advanced version of the monofocal lens. You can see things clearly but still some objects will look blurry.
+                  </p>
+                  }
+
+
+                  {
+                    currentState == 5 &&   <p className="state_description text-dark fade-in visible">
+                    You will be able to see the world clearly without glasses.
+                  </p>
+                  }
+
+</div>
+
 
 </div>
 

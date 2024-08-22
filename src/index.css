@@ -23,3 +23,47 @@ body {
 .ms-as {
   margin-left:13rem;
 }
+
+
+.pres_text {
+   margin-left: 10%;
+}
+
+.cataract_text {
+  margin-left: 7%;
+}
+
+.monofocul_text {
+  margin-left: 13%;
+  width: 13%;
+}
+
+.edof_text {
+  margin-left:2%;
+}
+
+.trifocul_text {
+  margin-left: 7%;
+}
+
+.iol_text {
+  margin: 0 15%;
+}
+
+.prior_text {
+  margin: 0 5% 0 7% ;
+}
+
+.fade-in {
+  animation: fadeIn 0.9s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
