@@ -7,7 +7,7 @@ import EdofLens from "../assets/lisa_tri_lens.png";
 import TriFoculLens from "../assets/lisa_tri_lens.png";
 import BtnAutoPlay from "../assets/btn_autoplay_lightblue.png";
 
-
+import { Link } from 'react-router-dom';
 const states = [
   {
     stateId : 0,
@@ -276,9 +276,22 @@ const WithoutAstigmatism = () => {
     <section>
       <div className='container'>
         <div className='row justify-content-center'>
-          <div className='col col-lg-10 col-xl-8 px-5 mt-5'>
+          <div className='col  px-xl-5 '>
+            <header className='d-flex justify-content-between'>
+            <div>
             <h3>Visual Simulation Tool</h3>
             <p>Cataract + Presbyopia</p>
+            </div>
+            <div className='align-self-center'> 
+            <Link to="/with-astigmatism" className=" option_btn  text-decoration-none">
+              With Astigmatism
+
+                        </Link>
+
+              
+            </div>
+            </header>
+
             <div className="image-stack">
               {
                 [...Array(6)].map((_, index) => (
@@ -448,7 +461,7 @@ const WithoutAstigmatism = () => {
 </div>
             </div>
 
-            <div className='mt-3 row align-items-center' >
+            <div className='mt-3 row align-items-start' >
               <div className='col-md-4'>
               <img src={BtnAutoPlay} alt="auto play button" ref={autoPlayBtnRef} onClick={handleAutoPlay} className=''/> 
               <span className='ms-2'> Auto Play  </span>

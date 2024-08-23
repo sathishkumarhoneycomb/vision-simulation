@@ -1,10 +1,14 @@
 body {
   background-color: #dddddd;
+  overflow: hidden;
 }
 
 .container {
-  max-width:1200px;
+  max-width:900px;
   background-color: #ffffff;
+  height: 100vh;
+  margin-top: 3rem;
+  padding: 3rem;
 }
 
 .state_active {
@@ -39,11 +43,11 @@ body {
 }
 
 .edof_text {
-  margin-left:2%;
+  margin-left:4%;
 }
 
 .trifocul_text {
-  margin-left: 7%;
+  margin-left: 9%;
 }
 
 .iol_text {
@@ -54,9 +58,48 @@ body {
   margin: 0 5% 0 7% ;
 }
 
+
+/* with astigmatism */
+.astigmatism_text {
+  margin-left: 5%;
+}
+
+.astig_pres_text {
+  margin-left: 3%;
+}
+
+.astig_cataract_text {
+  margin-left: 3%;
+}
+.astig_monofocul_text {
+  margin-left: 6%;
+}
+
+.astig_monofocul_toric_text {
+  margin-left: 2%;
+  width: 10%;
+}
+
+.astig_edof_toric_text {
+  margin-left: 2%;
+}
+
 .fade-in {
   animation: fadeIn 0.9s ease-in-out forwards;
   opacity: 0;
+}
+
+.option_btn {
+  width: 100%;
+  border: 1px solid #008bd0;
+  padding:0.5rem 1.5rem;
+  margin-bottom: 1rem;;
+
+}
+
+.option_btn:hover {
+  background-color:#008bd0;
+  color: #fff;
 }
 
 @keyframes fadeIn {

@@ -6,8 +6,10 @@ import RangeMarker from "../assets/btn_slider_lightblue.png";
 import EdofLens from "../assets/lisa_tri_lens.png";
 import TriFoculLens from "../assets/lisa_tri_lens.png";
 import BtnAutoPlay from "../assets/btn_autoplay_lightblue.png";
+import ToribToric from "../assets/with-astigmatism/torbi_toric.png";
 
 
+import { Link } from 'react-router-dom';
 
 
 
@@ -98,22 +100,43 @@ function WithAstigmatism() {
     const computeOpacity = () => {
       const minOpacity = 0.1;
       const maxOpacity = 0.9;
+
+      
       
       let opacityValue1 = minOpacity + ((sliderValue - minRange) / (maxRange - minRange)) * (maxOpacity - minOpacity);
-      opacityValue1 = Number(opacityValue1.toFixed(3));
+      opacityValue1 = Number(opacityValue1.toFixed(2));
       return opacityValue1
     }
 
     const computeHeight = () => {
-        let minHeight = 337;
-        let maxHeight = 390;
-        if(sliderValue >= 300 && sliderValue <= 1000) {
+        let minHeight = 100;
+        let maxHeight = 115;
 
-            // i wanted to increase the heights of first four images 
-            let heightValue = minHeight + ((sliderValue - 300) / (10000 - 300)) * (maxHeight - minHeight);
-            heightValue = Number(heightValue.toFixed(2));
-            return heightValue;
+        let minHeightRange = 300;
+        let maxHeightRange = 1400;
+        if(sliderValue >= 300 && sliderValue <= 1400) {
 
+        // i wanted to increase the heights of first four images 
+        let heightValue = minHeight + ((sliderValue - minHeightRange) / (maxHeightRange - minHeightRange)) * (maxHeight - minHeight);
+        heightValue = Number(heightValue.toFixed(2));
+        return `${heightValue}%`;
+
+        }
+    }
+
+
+    const computeTop = function() {
+
+        let minTop = 0;
+        let maxTop = -7;
+
+        let minTopRange = 300;
+        let maxTopRange = 1400;
+
+        if(sliderValue >= 300 && sliderValue <= 1400) {
+          let topValue = minTop + ((sliderValue - minTopRange) / (maxTopRange - minTopRange)) * (maxTop - minTop);
+          topValue = Number(topValue.toFixed(2));
+          return `${topValue}%`;
         }
     }
   
@@ -130,16 +153,16 @@ function WithAstigmatism() {
       let minScale = 0.7;
       let maxScale = 2.0;
   
-      let minLeftRange = 2900;
-      let maxLeftRange = 3300;
+      let minLeftRange = 3600;
+      let maxLeftRange = 3800;
   
   
-      let minScaleRange = 3301;
-      let maxScaleRange = 3500;
+      let minScaleRange = 3801;
+      let maxScaleRange = 4000;
   
   
   
-      if(sliderValue >= 2900 && sliderValue <= 3300) {
+      if(sliderValue >= 3600 && sliderValue <= 3800) {
           let leftValue = minLeft + ((sliderValue - minLeftRange) / (maxLeftRange - minLeftRange)) * (maxLeft - minLeft); 
           return { ...style , left: `${leftValue}%`}
       } else {
@@ -147,25 +170,53 @@ function WithAstigmatism() {
         return {left : "50%", transform: `translate(-50%, -50%) scale(${scaleValue})`}
       }
     }
+
+
+    function torbiToricLensStyle() {
+      let minLeft = -50;
+      let maxLeft = 50;
+  
+      
+      let minScale = 0.7;
+      let maxScale = 2.0;
+  
+      let minLeftRange = 4600;
+      let maxLeftRange = 4800;
+  
+  
+      let minScaleRange = 4801;
+      let maxScaleRange = 5000;
+  
+  
+      if(sliderValue >= minLeftRange && sliderValue <= maxLeftRange) {
+          let leftValue = minLeft + ((sliderValue - minLeftRange) / (maxLeftRange - minLeftRange)) * (maxLeft - minLeft); 
+          return { ...style , left: `${leftValue}%`}
+      } else {
+        let scaleValue = minScale + ((sliderValue - minScaleRange) / (maxScaleRange - minScaleRange)) * (maxScale - minScale); 
+        return {left : "50%", transform: `translate(-50%, -50%) scale(${scaleValue})`}
+      }
+
+
+    }
   
   
     function EdofLensStyle() {
       let minLeft = -50;
       let maxLeft = 50;
   
-      let minLeftRange = 3900;
-      let maxLeftRange = 4200;
+      let minLeftRange = 5600;
+      let maxLeftRange = 5800;
   
       let minScale = 0.7;
       let maxScale = 4.0;
   
-      let minScaleRange = 4201;
-      let maxScaleRange = 4500;
+      let minScaleRange = 5801;
+      let maxScaleRange = 6000;
   
   
   
       
-      if(sliderValue >= 3900 && sliderValue <= 4200) {
+      if(sliderValue >= minLeftRange && sliderValue <= maxLeftRange) {
         let leftValue = minLeft + ((sliderValue - minLeftRange) / (maxLeftRange - minLeftRange)) * (maxLeft - minLeft); 
         return { ...style , left: `${leftValue}%`}
     } else {
@@ -179,19 +230,19 @@ function WithAstigmatism() {
       let minLeft = -50;
       let maxLeft = 50;
   
-      let minLeftRange = 4900;
-      let maxLeftRange = 5200;
+      let minLeftRange = 6600;
+      let maxLeftRange = 6800;
   
       let minScale = 0.7;
       let maxScale = 4.0;
   
-      let minScaleRange = 5201;
-      let maxScaleRange = 5500;
+      let minScaleRange = 6801;
+      let maxScaleRange = 7000;
   
   
   
       
-      if(sliderValue >= 4900 && sliderValue <= 5200) {
+      if(sliderValue >= minLeftRange && sliderValue <= maxLeftRange) {
         let leftValue = minLeft + ((sliderValue - minLeftRange) / (maxLeftRange - minLeftRange)) * (maxLeft - minLeft); 
         return { ...style , left: `${leftValue}%`}
     } else {
@@ -224,38 +275,38 @@ function WithAstigmatism() {
       minRange = 2001
       maxRange = 3000
     
-    } else if (sliderValue >= 3001 && sliderValue <= 4500) {
+    } else if (sliderValue >= 3001 && sliderValue <= 4000) {
       // cataract state
       currentState = 3
       currentCategory = 1
       minRange = 3001
-      maxRange = 4500
+      maxRange = 4000
 
-    } else if (sliderValue >= 4501 && sliderValue <= 5500) { 
+    } else if (sliderValue >= 4001 && sliderValue <= 5000) { 
       // monofocul state 
       currentState = 4 
       currentCategory = 2
-      minRange = 4501 
-      maxRange = 5500
+      minRange = 4001 
+      maxRange = 5000
 
-    } else if(sliderValue >= 5501 && sliderValue <= 6500) {
+    } else if(sliderValue >= 5001 && sliderValue <= 6000) {
       // monofocul toric  state 
       currentState = 5 
       currentCategory = 3
-      minRange = 5501
-      maxRange = 6500
-    } else if (sliderValue >= 6501 && sliderValue <= 7500 ) {
+      minRange = 5001
+      maxRange = 6000
+    } else if (sliderValue >= 6001 && sliderValue <= 7000 ) {
         // edof toric  state
         currentState = 6 
         currentCategory = 3
-        minRange = 6501
-        maxRange = 7500
-    } else if (sliderValue >= 7501 && sliderValue <= 8500) {
+        minRange = 6001
+        maxRange = 7000
+    } else if (sliderValue >= 7001 && sliderValue <= 8000) {
         // turofic toric state 
         currentState =  7
         currentCategory = 3
-        minRange = 7501
-        maxRange = 8500
+        minRange = 7001
+        maxRange = 8000
     }
 
 
@@ -301,7 +352,7 @@ function WithAstigmatism() {
   
     console.log(sliderValue);
   
-    if(sliderValue > 8500) {
+    if(sliderValue > 8000) {
       setautoPlay((prev) => {
         clearInterval(prev.intervalId)
         return {intervalId : 0, intervalStatus : false};
@@ -321,9 +372,23 @@ function WithAstigmatism() {
       <section>
         <div className='container'>
           <div className='row justify-content-center'>
-            <div className='col col-lg-10 col-xl-8 px-5 mt-5'>
-              <h3>Visual Simulation Tool</h3>
-              <p>Cataract + Presbyopia</p>
+            <div className='col  px-5 '>
+            <header className='d-flex justify-content-between'>
+            <div>
+            <h3>Visual Simulation Tool</h3>
+            <p>Cataract + Presbyopia + Astigmatism</p>
+            </div>
+            <div className='align-self-center'> 
+            <Link to="/without-astigmatism" className=" option_btn  text-decoration-none">
+              Without Astigmatism
+
+                        </Link>
+
+              
+            </div>
+            </header>
+
+
               <div className="image-stack">
                 {
                   [...Array(imageSrc.length)].map((_, index) => (
@@ -332,15 +397,20 @@ function WithAstigmatism() {
                       src={imageSrc[index]}
                       alt={`Image ${index + 1}`}
                       style={{
-                        opacity: index == currentState ? 1 : (index == currentState + 1 && sliderValue > 300 ? computeOpacity() : 0),
+                        // if the currentState ( 1 to 3 )
+                        // if the currentState ( 4 to 7 )
+                        opacity: index == currentState ? 1 : (index == currentState + 1 && sliderValue > 300 && currentState <= 3 ? computeOpacity() : 0),
                         transition: 'opacity 0.3s',
+                        height: `${ index < 5 && sliderValue > 300 ?  (sliderValue >= 300 && sliderValue <= 1400 ? computeHeight() : "115%" )  : "100%"}`,
+                        top: `${ index < 5 && sliderValue > 300 ?  (sliderValue >= 300 && sliderValue <= 1400 ? computeTop() : "-7%" )  : "0%"}`
+
                       }}
                       className="stack-image"
                     />
                   ))
                 }
-                {/* {
-                  sliderValue >= 2900 && sliderValue <= 3500 && (
+ {
+                  sliderValue >= 3600 && sliderValue <= 4000 && (
                     <img
                       src={TorbiLens}
                       alt="torbi lens"
@@ -351,11 +421,24 @@ function WithAstigmatism() {
                     />
                   )
                 }
-  
-                {
-                  sliderValue >= 3900 && sliderValue <= 4500 && (
+    {
+                  sliderValue >= 4600 && sliderValue <= 5000 && (
                       <img 
-                      src={EdofLens}
+                      src={ToribToric}
+                      alt="trifocul lens"
+                      className='torbi_lens bg-transparent'
+                      style = {
+                        torbiToricLensStyle()
+                      }
+                      />  
+                  )
+                }
+  
+  
+{
+                  sliderValue >= 5600 && sliderValue <= 6000 && (
+                      <img 
+                      src={TriFoculLens}
                       alt="trifocul lens"
                       className='torbi_lens bg-transparent'
                       style = {
@@ -363,10 +446,10 @@ function WithAstigmatism() {
                       }
                       />  
                   )
-                }
-  
-  {
-                  sliderValue >= 4900 && sliderValue <= 5500 && (
+                } 
+
+{
+                  sliderValue >= 6600 && sliderValue <= 7000 && (
                       <img 
                       src={TriFoculLens}
                       alt="trifocul lens"
@@ -376,7 +459,7 @@ function WithAstigmatism() {
                       }
                       />  
                   )
-                } */}
+                } 
   
                 <img
                   src={RangeMarker}
@@ -410,7 +493,7 @@ function WithAstigmatism() {
   
   <p
     key={2}
-    className={`pres_text ${
+    className={`astig_pres_text ${
       currentState === 2 ? "state_active" : ""
     } `}
   >
@@ -419,7 +502,7 @@ function WithAstigmatism() {
   
   <p
     key={3}
-    className={`cataract_text ${
+    className={`astig_cataract_text ${
       currentState === 3 ? "state_active" : ""
     }`}
   >
@@ -428,7 +511,7 @@ function WithAstigmatism() {
   
   <p
     key={4}
-    className={`monofocul_text ${
+    className={`astig_monofocul_text ${
       currentState === 4 ? "state_active" : ""
     }`}
   >
@@ -437,7 +520,7 @@ function WithAstigmatism() {
 
   <p
     key={5}
-    className={`monofocul_toric_text ${
+    className={`astig_monofocul_toric_text ${
       currentState === 5 ? "state_active" : ""
     }`}
   >
@@ -446,7 +529,7 @@ function WithAstigmatism() {
   
   <p
     key={6}
-    className={`edof_toric_text ${
+    className={`astig_edof_toric_text ${
       currentState === 6 ? "state_active" : ""
     }`}
   >
@@ -455,7 +538,7 @@ function WithAstigmatism() {
   
   <p
     key={7}
-    className={`trifocul_toric_text ${
+    className={`astig_trifocul_toric_text ${
       currentState === 7 ? "state_active" : ""
     } `}
   >
@@ -466,7 +549,7 @@ function WithAstigmatism() {
                 <input
                   type="range"
                   min="1"
-                  max="8500"
+                  max="8000"
                   value={sliderValue}
                   onChange={handleSliderChange}
                   className="range-slider w-100"
@@ -499,7 +582,7 @@ function WithAstigmatism() {
   </div>
               </div>
   
-              <div className='mt-3 row align-items-center' >
+              <div className='mt-3 row align-items-start' >
                 <div className='col-md-4'>
                 <img src={BtnAutoPlay} alt="auto play button" ref={autoPlayBtnRef} onClick={handleAutoPlay} className=''/> 
                 <span className='ms-2'> Auto Play  </span>
@@ -544,6 +627,18 @@ function WithAstigmatism() {
                       You will be able to see the world clearly without glasses.
                     </p>
                     }
+
+{
+                      currentState == 6 &&   <p className="state_description text-dark fade-in visible">
+                      You will be able to see the world clearly without glasses.
+                    </p>
+                    }
+                             {
+                      currentState == 7 &&   <p className="state_description text-dark fade-in visible">
+                      You will be able to see the world clearly without glasses.
+                    </p>
+                    }
+
   
   </div>
   
